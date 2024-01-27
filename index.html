@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <div id="output">
+    <h2>Результаты операций над массивом чисел:</h2>
+    <div id="greaterThanPrev"></div>
+    <div id="averageSum"></div>
+    <div id="sortedOddNumbers"></div>
+  </div>
+
+  <script>
+    const numbers = [5, 12, 3, 8, 9, 15, 7, 10, 4, 6];
+
+    const greaterThanPrev = numbers.filter((num, index) => index > 0 && num > numbers[index - 1]);
+
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    const average = sum / numbers.length;
+
+    const oddNumbers = numbers.filter(num => num % 2 !== 0).sort((a, b) => b - a);
+
+    const output = document.getElementById('output');
+    const greaterThanPrevDiv = document.getElementById('greaterThanPrev');
+    const averageSumDiv = document.getElementById('averageSum');
+    const sortedOddNumbersDiv = document.getElementById('sortedOddNumbers');
+
+    greaterThanPrevDiv.innerHTML = `<p>Элементы, которые больше предыдущих: ${greaterThanPrev.join(', ')}</p>`;
+    averageSumDiv.innerHTML = `<p>Среднее значение: ${average.toFixed(2)}</p><p>Сумма всех элементов: ${sum}</p>`;
+    sortedOddNumbersDiv.innerHTML = `<p>Нечетные элементы массива по убыванию: ${oddNumbers.join(', ')}</p>`;
+  </script>
+</body>
+</html>
